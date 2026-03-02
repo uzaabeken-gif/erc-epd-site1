@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Upload {
+  id              Int              @id @default(autoincrement())
+  originalName    String
+  storedPath      String
+  period          String
+  status          String           @default("queued")
+  totalPages      Int              @default(0)
+  recognizedCount Int              @default(0)
+  unassignedCount Int              @default(0)
+  sourceHash      String
+  error           String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  receipts        Receipt[]
+  unassignedPages UnassignedPage[]
+}
+
+model Receipt {
+  id         Int      @id @default(autoincrement())
+  uploadId   Int
+  upload     Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  period     String
+  account    String?
+  rawAddress String?
+  settlement String?
+  street     String?
+  house      String?
+  apartment  String?
+  filePath   String
+  pageStart  Int
+  pageEnd    Int
+  sourceHash String
+  createdAt  DateTime @default(now())
+
+  @@index([period, account])
+  @@index([settlement, street, house, apartment])
+}
+
+model UnassignedPage {
+  id         Int      @id @default(autoincrement())
+  uploadId   Int
+  upload     Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  pageNumber Int
+  rawText    String
+  createdAt  DateTime @default(now())
+}
+
+model Advertisement {
+  id        Int      @id @default(autoincrement())
+  ruText    String
+  kzText    String
+  linkUrl   String?
+  imageUrl  String?
+  mediaPath String?
+  mediaType String?
+  isActive        Boolean  @default(true)
+  rotationSeconds Int      @default(5)
+  createdAt       DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactInfo {
+  id            Int      @id @default(autoincrement())
+  phone         String
+  email         String
+  address       String
+  workHours     String
+  suppliersText String
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+}
+
+model Supplier {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  phone       String?
+  email       String?
+  website     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  services    SupplierService[]
+}
+
+model SupplierService {
+  id          Int      @id @default(autoincrement())
+  supplierId  Int
+  supplier    Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  priceInfo   String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
