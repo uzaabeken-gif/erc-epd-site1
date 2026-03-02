@@ -1,0 +1,7 @@
+node_modules
+backend/node_modules
+frontend/node_modules
+storage/*.db
+storage/*.db-journal
+frontend/dist
+*.log
