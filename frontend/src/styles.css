@@ -473,3 +473,22 @@ select:focus {
 .supplier-details > summary::-webkit-details-marker {
   display: none;
 }
+
+.card:hover {
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  border-color: #d7e3f4;
+}
+
+.hero {
+  background: linear-gradient(135deg, #ffffff 0%, #f4fbff 100%);
+}
+
+.btn,
+button {
+  transition: background-color 0.2s ease, transform 0.06s ease;
+}
+
+.btn:active,
+button:active {
+  transform: translateY(1px);
+}

@@ -105,7 +105,7 @@ export default function GetEpd() {
           <div className="result-list">
             {receipts.map((item) => (
               <button key={item.id} className={`result-item ${receipt?.id === item.id ? 'active' : ''}`} onClick={() => setReceipt(item)}>
-                <strong>#{item.id}</strong> · {item.sourceFile || t('unknownFile')} · стр. {item.pageStart}-{item.pageEnd}
+                <strong>#{item.id}</strong> · {item.sourceFile || t('unknownFile')} · {t('pageAbbr')} {item.pageStart}-{item.pageEnd}
               </button>
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function GetEpd() {
           <div className="receipt-top">
             <div>
               <h3>{t('periodResult')} {receipt.period}</h3>
-              <p className="muted">{t('sourcePages')}: {receipt.sourceFile || t('unknown')}, страницы {receipt.pageStart}-{receipt.pageEnd}</p>
+              <p className="muted">{t('sourcePages')}: {receipt.sourceFile || t('unknown')}, {t('pagesWord')} {receipt.pageStart}-{receipt.pageEnd}</p>
             </div>
             <a className="btn" href={`${API_URL}/api/public/receipt/${receipt.id}/download`}>{t('downloadPdf')}</a>
           </div>

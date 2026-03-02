@@ -43,6 +43,8 @@ const messages = {
     unknownFile: 'Файл неизвестен',
     periodResult: 'Результат за период',
     sourcePages: 'Источник',
+    pagesWord: 'страницы',
+    pageAbbr: 'стр.',
     unknown: 'неизвестно',
     downloadPdf: 'Скачать PDF',
     viewerLoading: 'Загрузка PDF...',
@@ -71,6 +73,8 @@ const messages = {
 
     adBlockLabel: 'Рекламный блок',
     adImageAlt: 'Реклама',
+    adPrev: 'Предыдущая реклама',
+    adNext: 'Следующая реклама',
 
     adminTitle: 'Админ-панель',
     recognitionTitle: 'Проверка распознавания'
@@ -117,6 +121,8 @@ const messages = {
     unknownFile: 'Белгісіз файл',
     periodResult: 'Кезең бойынша нәтиже',
     sourcePages: 'Дереккөз',
+    pagesWord: 'беттер',
+    pageAbbr: 'бет',
     unknown: 'белгісіз',
     downloadPdf: 'PDF жүктеу',
     viewerLoading: 'PDF жүктелуде...',
@@ -145,6 +151,8 @@ const messages = {
 
     adBlockLabel: 'Жарнама блогы',
     adImageAlt: 'Жарнама',
+    adPrev: 'Алдыңғы жарнама',
+    adNext: 'Келесі жарнама',
 
     adminTitle: 'Әкімші панелі',
     recognitionTitle: 'Тану тексерісі'

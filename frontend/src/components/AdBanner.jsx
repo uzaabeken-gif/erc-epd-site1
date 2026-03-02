@@ -70,9 +70,9 @@ export default function AdBanner() {
 
       {creatives.length > 1 && (
         <div className="ad-controls">
-          <button type="button" className="ad-control" onClick={(e) => { e.preventDefault(); setCurrentIndex((prev) => (prev - 1 + creatives.length) % creatives.length); }}>‹</button>
+          <button type="button" className="ad-control" aria-label={t('adPrev')} onClick={(e) => { e.preventDefault(); setCurrentIndex((prev) => (prev - 1 + creatives.length) % creatives.length); }}>‹</button>
           <span className="ad-index">{currentIndex + 1} / {creatives.length}</span>
-          <button type="button" className="ad-control" onClick={(e) => { e.preventDefault(); setCurrentIndex((prev) => (prev + 1) % creatives.length); }}>›</button>
+          <button type="button" className="ad-control" aria-label={t('adNext')} onClick={(e) => { e.preventDefault(); setCurrentIndex((prev) => (prev + 1) % creatives.length); }}>›</button>
         </div>
       )}
 
